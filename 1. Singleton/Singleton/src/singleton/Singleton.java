@@ -27,13 +27,16 @@ public class Singleton {
      * Make the Constructor private, prevent instantiation from outside
      */
     private Singleton(){
-    
+        System.out.println("new Singleton()");
     }
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        
+        System.out.println("1");
+        sharedInstance();
     }
     
 }
