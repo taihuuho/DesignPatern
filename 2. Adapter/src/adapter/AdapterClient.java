@@ -28,8 +28,8 @@ public class AdapterClient {
         QueueTarget queueTarget = adapter;
         queueTarget.enqueue("Trinh Truong");
         
-        String dequeue = queueTarget.dequeue();
-        System.out.println(dequeue);
+//        String dequeue = queueTarget.dequeue();
+//        System.out.println(dequeue);
         
         System.out.println(adapter);
     }
