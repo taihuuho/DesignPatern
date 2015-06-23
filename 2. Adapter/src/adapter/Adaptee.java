@@ -18,6 +18,7 @@ public class Adaptee {
 
     public Adaptee(){
         data = new String[MAX_ELEMENT_COUNT];
+        end = -1;
     }
     
     public int getStart() {
@@ -66,4 +67,19 @@ public class Adaptee {
         return data[start + pos];
     }
 
+    @Override
+    public String toString() {
+        StringBuilder builder = new StringBuilder("[");
+        for(int i = start; i<= end; i++){
+            builder.append(data[i]).append(", ");
+        }
+        
+        if (!empty()){
+            builder.delete(builder.length(), builder.length() - 2);
+        }
+        builder.append("]");
+        return builder.toString();
+    }
+
+    
 }

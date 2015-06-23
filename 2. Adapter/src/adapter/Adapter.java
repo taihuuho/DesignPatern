@@ -56,4 +56,8 @@ public class Adapter implements StackTarget, QueueTarget {
         return adaptee.empty();
     }
 
+    @Override
+    public String toString() {
+        return adaptee.toString();
+    }
 }

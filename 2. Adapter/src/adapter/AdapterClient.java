@@ -16,8 +16,22 @@ public class AdapterClient {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        StackTarget tart = new Adapter();
+        Adapter adapter = new Adapter();
+        StackTarget stackTarget = adapter;
         
+        stackTarget.push("Tai Ho");
+        stackTarget.push("Trinh Truong");
+        
+        String pop = stackTarget.pop();
+        System.out.println(pop);
+        
+        QueueTarget queueTarget = adapter;
+        queueTarget.enqueue("Trinh Truong");
+        
+        String dequeue = queueTarget.dequeue();
+        System.out.println(dequeue);
+        
+        System.out.println(adapter);
     }
     
 }
