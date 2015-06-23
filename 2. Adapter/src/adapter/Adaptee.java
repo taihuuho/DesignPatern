@@ -75,7 +75,8 @@ public class Adaptee {
         }
         
         if (!empty()){
-            builder.delete(builder.length() - 2 , 2);
+            System.out.println(builder.length() );
+            builder.delete(builder.length()-2 , builder.length());
         }
         builder.append("]");
         return builder.toString();
