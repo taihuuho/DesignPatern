@@ -5,21 +5,36 @@
  */
 package templatemethod;
 
+import java.util.List;
+
 /**
  *
  * @author 984571
  */
 public abstract class CharacterPrinter {
     
-    public void getInputFromFile(){
-    }
-    public abstract void recontructCharacter();
+    protected List<String> input;
     
-    public void print(){
+    protected char[][] output;
+
+    protected abstract void recontructCharacter();
+    
+    public CharacterPrinter(List<String> input) {
+        this.input = input;
+    }
+    
+    private void print(){
+        StringBuilder stringBuilder = new StringBuilder();
+        for (char[] row : output) {
+            stringBuilder.delete(0, stringBuilder.length());
+            for (int j = 0; j < row.length; j++) {
+                stringBuilder.append(row[j]);
+            }
+            System.out.println(stringBuilder.toString());
+        }
     }
     
     public void resolve(){
-        getInputFromFile();
         recontructCharacter();
         print();
     }
