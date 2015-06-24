@@ -5,6 +5,7 @@
  */
 package templatemethod;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -19,6 +20,20 @@ public class VerticalSymmetryCharacterPrinter extends CharacterPrinter {
 
     @Override
     protected void recontructCharacter() {
+        int capacity = input.size() * 2;
+        output = new ArrayList<>(capacity);
+        for (int i = 0; i < capacity; i++) {
+            if (i < input.size()) {
+                output.add(input.get(i));
+            }else{
+                int index = capacity - i - 1;
+                if (index >= 0 && index < input.size()){
+                    output.add(input.get(index));
+                }else{
+                    output.add(input.get(0));
+                }
+            }
+        }
     }
     
 }

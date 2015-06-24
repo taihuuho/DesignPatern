@@ -5,6 +5,7 @@
  */
 package templatemethod.factoryMethod;
 
+import java.io.IOException;
 import templatemethod.CharacterPrinter;
 /**
  *
@@ -12,5 +13,5 @@ import templatemethod.CharacterPrinter;
  */
 public interface CharacterPrinterFactory {
     
-    public CharacterPrinter createCharacterPrinterFromFile(String filePath);
+    public CharacterPrinter createCharacterPrinterFromFile(String filePath) throws IOException;
 }

@@ -5,6 +5,7 @@
  */
 package templatemethod;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -19,6 +20,16 @@ public class HorizontalSymmetryCharacterPrinter extends CharacterPrinter {
 
     @Override
     protected void recontructCharacter() {
+        output = new ArrayList<>(input.size());
+        for (String string : input) {
+            char[] chars = new char[MAX_COLUMN];
+            string.getChars(0, string.length(), chars, 0);
+            int length = chars.length;
+            for (int i = 0; i < length/2; i++) {
+                chars[length - i - 1] = chars[i];
+            }
+            output.add(new String(chars));
+        }
     }
     
 }

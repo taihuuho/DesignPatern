@@ -19,6 +19,7 @@ public class NoneSymmetryCharacterPrinter extends CharacterPrinter{
 
     @Override
     protected void recontructCharacter() {
+        this.output = input;
     }
     
 }

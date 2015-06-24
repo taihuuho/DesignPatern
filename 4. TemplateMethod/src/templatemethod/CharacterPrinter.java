@@ -13,9 +13,13 @@ import java.util.List;
  */
 public abstract class CharacterPrinter {
     
+    public static final Integer MAX_ROW = 20;
+    public static final Integer MAX_COLUMN = 10;
+    
+    
     protected List<String> input;
     
-    protected char[][] output;
+    protected List<String> output;
 
     protected abstract void recontructCharacter();
     
@@ -24,13 +28,10 @@ public abstract class CharacterPrinter {
     }
     
     private void print(){
-        StringBuilder stringBuilder = new StringBuilder();
-        for (char[] row : output) {
-            stringBuilder.delete(0, stringBuilder.length());
-            for (int j = 0; j < row.length; j++) {
-                stringBuilder.append(row[j]);
+        if (output != null){
+            for (String row : output) {
+                System.out.println(row);
             }
-            System.out.println(stringBuilder.toString());
         }
     }
     
