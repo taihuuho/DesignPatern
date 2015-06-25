@@ -19,22 +19,32 @@ import templatemethod.VerticalSymmetryCharacterPrinter;
  *
  * @author 984571
  */
-public class SymmetryCharacterPrinterFactory implements CharacterPrinterFactory{
-    
+public class SymmetryCharacterPrinterFactory implements CharacterPrinterFactory {
+    //This factory should often times be a Singleton
+
+    private static SymmetryCharacterPrinterFactory factory = new SymmetryCharacterPrinterFactory();
+
+    private SymmetryCharacterPrinterFactory() {
+    }
+
+    public static SymmetryCharacterPrinterFactory getFactory() {
+        return factory;
+    }
+
     @Override
-    public CharacterPrinter createCharacterPrinterFromFile(String filePath) throws IOException{
-        
+    public CharacterPrinter createCharacterPrinterFromFile(String filePath) throws IOException {
+
         List<String> allLines = Files.readAllLines(Paths.get(filePath), Charset.defaultCharset());
-        
+
         CharacterPrinter printer = null;
-        if(allLines.get(0).length() <= CharacterPrinter.MAX_COLUMN /2 ){
+        if (allLines.get(0).length() <= CharacterPrinter.MAX_COLUMN / 2) {
             printer = new HorizontalSymmetryCharacterPrinter(allLines);
-        }else if(allLines.size() < CharacterPrinter.MAX_ROW / 2){
+        } else if (allLines.size() < CharacterPrinter.MAX_ROW / 2) {
             printer = new VerticalSymmetryCharacterPrinter(allLines);
-        }else{
+        } else {
             printer = new NoneSymmetryCharacterPrinter(allLines);
         }
         return printer;
     }
-    
+
 }

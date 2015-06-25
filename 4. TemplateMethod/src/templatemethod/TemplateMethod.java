@@ -19,7 +19,7 @@ public class TemplateMethod {
      */
     public static void main(String[] args) throws IOException {
         // TODO code application logic here
-        CharacterPrinterFactory factory = new SymmetryCharacterPrinterFactory();
+        CharacterPrinterFactory factory = SymmetryCharacterPrinterFactory.getFactory();
         
         CharacterPrinter printer1 = factory.createCharacterPrinterFromFile("src/1.txt");
         CharacterPrinter printer2 = factory.createCharacterPrinterFromFile("src/2.txt");
