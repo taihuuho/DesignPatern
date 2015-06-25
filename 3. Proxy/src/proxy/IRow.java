@@ -10,6 +10,4 @@ package proxy;
  * @author 984571
  */
 public interface IRow {
-    public String getColumn(int column);
-    public void setColumn(int column, String value);
 }

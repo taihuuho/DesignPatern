@@ -41,7 +41,7 @@ public class Table implements ITable {
 
     @Override
     public void modifyRow(int rowNum, IRow row) {
-
+        rows.set(rowNum, row);
     }
 
     @Override
