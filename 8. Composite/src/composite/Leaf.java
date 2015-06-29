@@ -34,4 +34,13 @@ public class Leaf extends Component {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    @Override
+    public float getWidth(){
+        return Math.abs(topLeft.getX() - bottomRight.getX());
+    }
+
+    @Override
+    public void assignHeight(){
+        this.height =  Math.abs(topLeft.getY() - bottomRight.getY());
+    }
 }

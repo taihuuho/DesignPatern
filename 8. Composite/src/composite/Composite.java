@@ -36,6 +36,8 @@ public class Composite extends Component {
     @Override
     public void removeChild(Component component) {
         list.remove(component);
+        
+        // re identify
     }
 
     @Override
