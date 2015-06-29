@@ -11,33 +11,27 @@ import java.util.Collection;
  *
  * @author 984571
  */
-public class Composite extends Component {
+public class Leaf extends Component {
 
     @Override
     public void print() {
         this.assignHeight();
         System.out.println("Render Element: " + title + " [width = " + getWidth() + ", height: " + this.height + "]");
-        
-        for (Component com : list) {
-            com.assignHeight();
-            System.out.print("\t");
-            com.print();
-
-        }
     }
 
     @Override
     public void addChild(Component component) {
-        list.add(component);
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public void removeChild(Component component) {
-        list.remove(component);
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public Collection<Component> getAllImmediateChildren() {
-        return list;
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
 }

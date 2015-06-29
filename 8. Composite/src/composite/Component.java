@@ -14,16 +14,27 @@ import java.util.Collection;
  */
 public abstract class Component {
 
-    private Collection<Component> list = new ArrayList<Component>();
+    protected final Collection<Component> list = new ArrayList<>();
     protected String title;
+
+    protected Coordinate topLeft;
+    protected Coordinate bottomRight;
+    
+    protected float height;
 
     public abstract void print();
 
-    public void addItem(Component item) {
-        list.add(item);
+    public abstract void addChild(Component component);
+
+    public abstract void removeChild(Component component);
+
+    public abstract Collection<Component> getAllImmediateChildren();
+
+    public float getWidth(){
+        return Math.abs(topLeft.getX() - bottomRight.getX());
     }
-    
-    public void addChild(Component component){
-        
+
+    public void assignHeight(){
+        this.height =  Math.abs(topLeft.getY() - bottomRight.getY());
     }
 }
