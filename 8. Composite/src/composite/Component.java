@@ -14,7 +14,7 @@ import java.util.Collection;
  */
 public abstract class Component {
 
-    protected final Collection<Component> list = new ArrayList<>();
+    
     protected String title;
 
     protected Coordinate topLeft;

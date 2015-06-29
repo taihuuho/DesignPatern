@@ -5,6 +5,7 @@
  */
 package composite;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 /**
@@ -12,7 +13,8 @@ import java.util.Collection;
  * @author 984571
  */
 public class Composite extends Component {
-
+    private final Collection<Component> list = new ArrayList<>();
+    
     @Override
     public void print() {
         this.assignHeight();
