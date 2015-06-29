@@ -18,6 +18,11 @@ public class Coordinate {
         this.y = y;
     }
 
+    Coordinate() {
+        x = 0;
+        y = 0;
+    }
+
     public float getX() {
         return x;
     }
@@ -33,6 +38,5 @@ public class Coordinate {
     public void setY(float y) {
         this.y = y;
     }
-    
     
 }

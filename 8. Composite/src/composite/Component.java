@@ -22,6 +22,29 @@ public abstract class Component {
     
     protected float height;
 
+    public Component(String title) {
+        this.title = title;
+        this.topLeft = new Coordinate();
+        this.bottomRight = new Coordinate();
+        this.height = 0;
+    }
+
+    public Coordinate getTopLeft() {
+        return topLeft;
+    }
+
+    public void setTopLeft(Coordinate topLeft) {
+        this.topLeft = topLeft;
+    }
+
+    public Coordinate getBottomRight() {
+        return bottomRight;
+    }
+
+    public void setBottomRight(Coordinate bottomRight) {
+        this.bottomRight = bottomRight;
+    }
+    
     public abstract void print();
 
     public abstract void addChild(Component component);

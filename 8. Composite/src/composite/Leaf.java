@@ -13,6 +13,10 @@ import java.util.Collection;
  */
 public class Leaf extends Component {
 
+    public Leaf(String title) {
+        super(title);
+    }
+
     @Override
     public void print() {
         this.assignHeight();
