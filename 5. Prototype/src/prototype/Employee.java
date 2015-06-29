@@ -26,7 +26,7 @@ public class Employee implements Cloneable, Serializable {
     @Override
     protected Object clone() throws CloneNotSupportedException {
         //implement deep copy here
-        Employee cloneObj = new Employee();
+        Employee cloneObj = (Employee) super.clone();
         cloneObj.id = id;
         /*
          Strings are immutable objects in java
@@ -40,16 +40,26 @@ public class Employee implements Cloneable, Serializable {
         cloneObj.city = city;
         cloneObj.state = state;
         cloneObj.zipcode = zipcode;
-        if (supervisor != null) {
-            cloneObj.supervisor = (Employee) supervisor.clone();
+        // Check if the employee has direct reports
+        if (staff != null && staff.length > 0) {
+            Employee[] staffList = new Employee[staff.length];
+            
+            int i = 0;
+            for (Employee emp : cloneObj.staff) {
+                if (emp != null) {
+                    emp = (Employee) emp.clone();
+                    emp.supervisor = this;
+                    staffList[i++] = emp;
+                }
+            }
+            
+            cloneObj.staff = staffList;
         }
 
-        if (staff != null) {
-            Employee[] cloneStaff = new Employee[staff.length];
-            for (int i = 0; i < staff.length; i++) {
-                cloneStaff[i] = (Employee) staff[i].clone();
-            }
-            cloneObj.staff = cloneStaff;
+        // Check employee having supervisor
+        if (cloneObj.supervisor != null) {
+            cloneObj.supervisor = (Employee) cloneObj.supervisor.clone();
+            cloneObj.supervisor.staff[0] = this;
         }
 
         return cloneObj;
