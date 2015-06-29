@@ -40,7 +40,8 @@ public class Employee implements Cloneable, Serializable {
         cloneObj.city = city;
         cloneObj.state = state;
         cloneObj.zipcode = zipcode;
-        // Check if the employee has direct reports
+        
+        
         if (staff != null && staff.length > 0) {
             Employee[] staffList = new Employee[staff.length];
             
