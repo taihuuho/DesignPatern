@@ -2,12 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/C:/Users/984571/Documents/GitHub/DesignPatern/3.%20Proxy/src/proxy/SynchronizationTableProxy.java</file>
-            <file>file:/C:/Users/984571/Documents/GitHub/DesignPatern/3.%20Proxy/src/proxy/Table.java</file>
-            <file>file:/C:/Users/984571/Documents/GitHub/DesignPatern/3.%20Proxy/src/proxy/ITable.java</file>
-            <file>file:/C:/Users/984571/Documents/GitHub/DesignPatern/3.%20Proxy/src/proxy/IRow.java</file>
-            <file>file:/C:/Users/984571/Documents/GitHub/DesignPatern/3.%20Proxy/src/proxy/ProxyClient.java</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>
