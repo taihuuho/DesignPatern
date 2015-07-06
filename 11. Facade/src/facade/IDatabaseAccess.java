@@ -6,13 +6,14 @@
 package facade;
 
 import java.sql.ResultSet;
-import java.util.HashMap;
 
 /**
  *
  * @author 984571
  */
 public interface IDatabaseAccess {
-    public ResultSet executeQuery(String query, HashMap params);
+    public void openConnection();
+    public ResultSet executeQuery(String query, String[] params);
     public int executeStoreProcedure(String storeProcedureName);
+    public void cleanUp();
 }
