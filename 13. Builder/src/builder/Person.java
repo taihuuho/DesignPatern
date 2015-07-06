@@ -1,5 +1,8 @@
 package builder;
-
+/**
+ *
+ * @author 984571
+ */
 public class Person {
 	public String name;
 	public String phoneNum;

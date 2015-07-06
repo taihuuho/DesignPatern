@@ -16,6 +16,10 @@ public class BuilderClient {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        Director d = new Director(new ConcreteBuilder());
+        d.ConstructRequest();
+        Request req = d.getRequest();
+        System.out.println(req.toString());
     }
-    
+
 }

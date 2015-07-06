@@ -1,5 +1,8 @@
 package builder;
-
+/**
+ *
+ * @author 984571
+ */
 public class Director {
 	IBuilder builder = null;
 	
