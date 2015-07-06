@@ -1,61 +1,41 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package abstractfactory.models;
+package edu.mum.lsvs.entity;
 
-import abstractfactory.pattern.Packaging;
-
-/**
- *
- * @author 984571
- */
 public class GiftItem {
-
-    private String giftId;
-    private String giftName;
-    private String description;
-    private String packagingType; //"bag", "box", or "wrap".
-    private Packaging packaging ;
-
-    public String getGiftId() {
-        return giftId;
+      private String id;
+      private String name;
+      private String desc;
+      private Package pkg;
+      
+    public GiftItem( String id, String name, String desc){
+    	this.id = id;
+    	this.name = name;
+    	this.desc = desc;
     }
-
-    public void setGiftId(String giftId) {
-        this.giftId = giftId;
-    }
-
-    public String getGiftName() {
-        return giftName;
-    }
-
-    public void setGiftName(String giftName) {
-        this.giftName = giftName;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public String getPackagingType() {
-        return packagingType;
-    }
-
-    public void setPackagingType(String packagingType) {
-        this.packagingType = packagingType;
-    }
-
-    public Packaging getPackaging() {
-        return packaging;
-    }
-
-    public void setPackaging(Packaging packaging) {
-        this.packaging = packaging;
-    }
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getDesc() {
+		return desc;
+	}
+	public void setDesc(String desc) {
+		this.desc = desc;
+	}
+	public Package getPkg() {
+		return pkg;
+	}
+	public void setPkg(Package pkg) {
+		this.pkg = pkg;
+	}
+      
+      
+      
 }
