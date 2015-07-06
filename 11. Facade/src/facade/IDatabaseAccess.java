@@ -5,6 +5,7 @@
  */
 package facade;
 
+import java.sql.CallableStatement;
 import java.sql.ResultSet;
 
 /**
@@ -14,6 +15,6 @@ import java.sql.ResultSet;
 public interface IDatabaseAccess {
     public void openConnection();
     public ResultSet executeQuery(String query, String[] params);
-    public int executeStoreProcedure(String storeProcedureName);
+    public CallableStatement executeStoreProcedure(String storeProcedureName, String[] params);
     public void cleanUp();
 }

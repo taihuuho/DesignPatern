@@ -45,18 +45,20 @@ public class DatabaseAccessFacade implements IDatabaseAccess {
     }
 
     @Override
-    public int executeStoreProcedure(String storeProcedureName) {
+    public CallableStatement executeStoreProcedure(String storeProcedureName, String[] params) {
 
         try {
             call = conn.prepareCall(storeProcedureName);
-            call.setInt(1, 1972);
-            call.registerOutParameter(2, java.sql.Types.INTEGER);
+            for (int i = 0; i < params.length; i++) {
+                call.setString(i + 1, params[i]);
+            }
             call.execute();
+            return call;
         } catch (SQLException ex) {
             Logger.getLogger(DatabaseAccessFacade.class.getName()).log(Level.SEVERE, null, ex);
+        }finally{
         }
-        return 0;
-
+        return null;
     }
 
     @Override
@@ -70,24 +72,28 @@ public class DatabaseAccessFacade implements IDatabaseAccess {
         if (rset != null) {
             try {
                 rset.close();
+                rset = null;
             } catch (SQLException ex) {
             }
         }
         if (prep != null) {
             try {
                 prep.close();
+                prep = null;
             } catch (SQLException ex) {
             }
         }
         if (call != null) {
             try {
                 call.close();
+                call = null;
             } catch (SQLException ex) {
             }
         }
         if (conn != null) {
             try {
                 conn.close();
+                conn = null;
             } catch (SQLException ex) {
             }
         }
