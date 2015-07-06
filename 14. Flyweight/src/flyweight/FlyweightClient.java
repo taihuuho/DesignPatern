@@ -16,6 +16,11 @@ public class FlyweightClient {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        ConcreteFlyWeight info = FlyWeightFactory.locationMap.get("loc1");
+        info.printCustomerInfo(1, "Tai Ho", "Whatsapp", info.getImage());
+        
+        info = FlyWeightFactory.locationMap.get("loc2");
+        info.printCustomerInfo(2, "Tai Ho 2", "Snapchat", info.getImage());
     }
     
 }

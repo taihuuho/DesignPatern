@@ -16,6 +16,26 @@ public class CommandClient {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        Square square = new Square();
+        ICommand createCmd = new CreateCommand(square);
+        ICommand scaleCmd = new ScaleCommand(square);
+        ICommand moveCmd = new MoveCommand(square);
+
+        RemoteControl remote = new RemoteControl();
+        remote.setCommand(createCmd, "5");
+        remote.pressButton();
+        remote.pressUndoButton();
+
+        remote.setCommand(scaleCmd, "2");
+        remote.pressButton();
+        remote.pressUndoButton();
+
+        remote.setCommand(moveCmd, "left 10");
+        remote.pressButton();
+
+        remote.setCommand(moveCmd, "right 5");
+        remote.pressButton();
+        remote.pressUndoButton();
     }
-    
+
 }
