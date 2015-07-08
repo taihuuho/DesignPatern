@@ -14,6 +14,8 @@ import javafx.event.EventHandler;
  */
 public class GameContext {
 
+    StateDemo GUI;
+
     private LevelState regularState;
     private LevelState gravelState;
     private LevelState wetState;
@@ -22,65 +24,73 @@ public class GameContext {
     private LevelState state;
 
     // event handlers
-    private RegularHandler regularHandler;
-    private GravelHandler gravelHandler;
-    private WetHandler wetHandler;
-    private IceHandler iceHandler;
+    
+    private LeftHandler leftHandler;
+    private RightHandler rightHandler;
+    private AccelHandler accelHandler;
+    private BrakeHandler brakeHandler;
+
+    public GameContext(StateDemo GUI) {
+        this.GUI = GUI;
+        state = getRegularState();
+    }
 
     public LevelState getState() {
         return state;
     }
 
-    public RegularHandler getRegularHandler() {
-        if (regularHandler == null) {
-            regularHandler = new RegularHandler();
+    public LeftHandler getLeftHandler() {
+        if (leftHandler == null) {
+            leftHandler = new LeftHandler();
         }
-        return regularHandler;
+        return leftHandler;
     }
 
-    public GravelHandler getGravelHandler() {
-        if (gravelHandler == null) {
-            gravelHandler = new GravelHandler();
+    public RightHandler getRightHandler() {
+        if (rightHandler == null) {
+            rightHandler = new RightHandler();
         }
-        return gravelHandler;
+        return rightHandler;
     }
 
-    public WetHandler getWetHandler() {
-        if (wetHandler == null) {
-            wetHandler = new WetHandler();
+    public AccelHandler getAccelHandler() {
+        if (accelHandler == null) {
+            accelHandler = new AccelHandler();
         }
-        return wetHandler;
+        return accelHandler;
     }
 
-    public IceHandler getIceHandler() {
-        if (iceHandler == null) {
-            iceHandler = new IceHandler();
+    public BrakeHandler getBrakeHandler() {
+        if (brakeHandler == null) {
+            brakeHandler = new BrakeHandler();
         }
-        return iceHandler;
+        return brakeHandler;
     }
+    
+    
 
-    private LevelState getRegularState() {
+    public LevelState getRegularState() {
         if (regularState == null) {
             regularState = new RegularState(this);
         }
         return regularState;
     }
 
-    private LevelState getGravelState() {
+    public LevelState getGravelState() {
         if (gravelState == null) {
             gravelState = new GravelState(this);
         }
         return gravelState;
     }
 
-    private LevelState getWetState() {
+    public LevelState getWetState() {
         if (wetState == null) {
             wetState = new WetState(this);
         }
         return wetState;
     }
 
-    private LevelState getIceState() {
+    public LevelState getIceState() {
         if (iceState == null) {
             iceState = new IceState(this);
         }
@@ -91,43 +101,36 @@ public class GameContext {
         this.state = state;
     }
 
-    private class RegularHandler implements EventHandler<ActionEvent> {
-
-        @Override
-        public void handle(ActionEvent t) {
-            setState(getRegularState());
-        }
-    }
-
-    private class GravelHandler implements EventHandler<ActionEvent> {
-
-        @Override
-        public void handle(ActionEvent t) {
-            setState(getGravelState());
-        }
-    }
-
-    private class WetHandler implements EventHandler<ActionEvent> {
-
-        @Override
-        public void handle(ActionEvent t) {
-            setState(getWetState());
-        }
-    }
-
-    private class IceHandler implements EventHandler<ActionEvent> {
-
-        @Override
-        public void handle(ActionEvent t) {
-            setState(getIceState());
-        }
-    }
 
     private class LeftHandler implements EventHandler<ActionEvent> {
 
         @Override
         public void handle(ActionEvent t) {
-            
+            GUI.setEffectArtribyraryScale(getState().getClass().getSimpleName() + " Left: " + getState().left());
+        }
+    }
+
+    private class RightHandler implements EventHandler<ActionEvent> {
+
+        @Override
+        public void handle(ActionEvent t) {
+            GUI.setEffectArtribyraryScale(getState().getClass().getSimpleName() + " Right: " + getState().right());
+        }
+    }
+    
+    private class AccelHandler implements EventHandler<ActionEvent> {
+
+        @Override
+        public void handle(ActionEvent t) {
+            GUI.setEffectArtribyraryScale(getState().getClass().getSimpleName() + " Accel: " + getState().accel());
+        }
+    }
+    
+    private class BrakeHandler implements EventHandler<ActionEvent> {
+
+        @Override
+        public void handle(ActionEvent t) {
+            GUI.setEffectArtribyraryScale(getState().getClass().getSimpleName() + " Brake: " + getState().brake());
         }
     }
 }
