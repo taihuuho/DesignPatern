@@ -13,14 +13,7 @@ import pkg20.mediator.MediatorClient;
  *
  * @author 984571
  */
-public class WhiteChess extends Chessman{
-
-    public WhiteChess(int w, int row, int column) {
-        super(w, row, column);
-        setStyle("-fx-background-color: #FFFFFF;");
-        ImageView img = new ImageView(ResourceRepository.black);
-        img.setFitHeight(w-5);
-        img.setFitWidth(w-5);
-        setGraphic(img);
-    }
+public class ResourceRepository {
+    public static Image black = new Image(MediatorClient.class.getResource("black.png" ).toExternalForm());
+    public static Image white = new Image(MediatorClient.class.getResource("white.png" ).toExternalForm());
 }

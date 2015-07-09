@@ -20,7 +20,7 @@ public class ReversiSquare extends GridPane{
     Chessman[][] chessmen = new Chessman[ROWS][COLUMNS];
 
     public ReversiSquare(int w) {
-        setPrefSize(w, w+1);
+        setPrefSize(w, w+3);
         setMinWidth(w);
         setMinHeight(w+1);
         setMaxHeight(w+3);
