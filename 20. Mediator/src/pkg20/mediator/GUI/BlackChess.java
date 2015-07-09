@@ -11,8 +11,9 @@ package pkg20.mediator.GUI;
  */
 public class BlackChess extends Chessman {
 
-    public BlackChess() {
-        setStyle("-fx-background: #000000;");
+    public BlackChess(int w, int row, int column) {
+        super(w, row, column);
+        setStyle("-fx-background-color: #000000;");
     }
 
 }

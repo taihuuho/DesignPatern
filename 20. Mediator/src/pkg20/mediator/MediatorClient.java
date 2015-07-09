@@ -12,31 +12,40 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import pkg20.mediator.GUI.Chessman;
+import pkg20.mediator.GUI.ReversiSquare;
 
 /**
  *
  * @author 984571
  */
 public class MediatorClient extends Application {
-    
+
     @Override
     public void start(Stage primaryStage) {
-        Button btn = new Button();
-        btn.setText("Say 'Hello World'");
-        btn.setOnAction(new EventHandler<ActionEvent>() {
-            
-            @Override
-            public void handle(ActionEvent event) {
-                System.out.println("Hello World!");
-            }
-        });
         
         StackPane root = new StackPane();
-        root.getChildren().add(btn);
+        Scene scene = new Scene(root, 350, 320);
+        scene.getStylesheets().clear();
+        scene.getStylesheets().add(getClass().getResource("chessman.css").toExternalForm());
         
-        Scene scene = new Scene(root, 300, 250);
+        // New game
+        Button newGame = new Button("New Game");
+        newGame.setOnAction(new EventHandler<ActionEvent>() {
+
+            @Override
+            public void handle(ActionEvent event) {
+                // restart game
+            }
+        });
+        root.getChildren().add(newGame);
         
-        primaryStage.setTitle("Hello World!");
+        // Game Square
+        ReversiSquare square = new ReversiSquare(320);
+        
+        root.getChildren().add(square);
+        
+        primaryStage.setTitle("Reversi");
         primaryStage.setScene(scene);
         primaryStage.show();
     }
@@ -47,5 +56,5 @@ public class MediatorClient extends Application {
     public static void main(String[] args) {
         launch(args);
     }
-    
+
 }

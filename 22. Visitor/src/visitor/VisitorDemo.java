@@ -3,16 +3,19 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package pkg20.mediator.GUI;
+package visitor;
 
 /**
  *
  * @author 984571
  */
-public class WhiteChess extends Chessman{
+public class VisitorDemo {
 
-    public WhiteChess(int w, int row, int column) {
-        super(w, row, column);
-        setStyle("-fx-background-color: #FFFFFF;");
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        // TODO code application logic here
     }
+    
 }

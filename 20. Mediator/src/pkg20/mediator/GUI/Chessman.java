@@ -11,6 +11,18 @@ import javafx.scene.control.Button;
  *
  * @author 984571
  */
-public class Chessman extends Button{
+public abstract class Chessman extends Button{
+
+    int row;
+    int column;
+    
+    public Chessman(int w, int row, int column) {
+        setPrefSize(w, w);
+        setMinWidth(w);
+        setMinHeight(w);
+        this.row = row;
+        this.column = column;
+        
+    }
     
 }
