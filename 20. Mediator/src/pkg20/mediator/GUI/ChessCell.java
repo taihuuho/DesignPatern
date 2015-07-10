@@ -27,6 +27,14 @@ public abstract class ChessCell extends Button{
     
     private boolean hinted;
 
+    public int getRow() {
+        return row;
+    }
+
+    public int getColumn() {
+        return column;
+    }
+
     public ChessColorType getType() {
         return type;
     }

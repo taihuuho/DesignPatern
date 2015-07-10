@@ -130,7 +130,88 @@ public class ReversiSquare extends GridPane implements EventHandler<ActionEvent>
     }
 
     public void determineAvailableCells() {
-        
+        for (ChessCell chesscell : yourMoves) {
+            // top
+            int index = chesscell.getRow() - 1;
+            boolean hasCompetitor = false;
+            while(index > 0){
+                ChessCell topCell = chesscells[index][chesscell.getColumn()];
+                if (topCell.getType() == Config.yourColor) {
+                    if (hasCompetitor) {
+                        break;
+                    }
+                    index -= 1;
+                }else if(topCell.getType() == ChessColorType.BLANK){
+                    topCell.setCanPlaceChess(hasCompetitor);
+                    break;
+                }
+                else{
+                    hasCompetitor = true;
+                    index -= 1;
+                }
+            }
+            
+            // bottom
+            index = chesscell.getRow() + 1;
+            hasCompetitor = false;
+            while(index < ROWS){
+                ChessCell cell = chesscells[index][chesscell.getColumn()];
+                if (cell.getType() == Config.yourColor) {
+                    if (hasCompetitor) {
+                        break;
+                    }
+                    index += 1;
+                }else if(cell.getType() == ChessColorType.BLANK){
+                    cell.setCanPlaceChess(hasCompetitor);
+                    break;
+                }
+                else{
+                    hasCompetitor = true;
+                    index += 1;
+                }
+            }
+           
+            // left
+            index = chesscell.getColumn()- 1;
+            hasCompetitor = false;
+            while(index > 0){
+                ChessCell cell = chesscells[chesscell.getRow()][index];
+                if (cell.getType() == Config.yourColor) {
+                    if (hasCompetitor) {
+                        break;
+                    }
+                    index -= 1;
+                }else if(cell.getType() == ChessColorType.BLANK){
+                    cell.setCanPlaceChess(hasCompetitor);
+                    break;
+                }
+                else{
+                    hasCompetitor = true;
+                    index -= 1;
+                }
+            }
+            
+            // right
+            index = chesscell.getColumn()+ 1;
+            hasCompetitor = false;
+            while(index < COLUMNS){
+                ChessCell cell = chesscells[chesscell.getRow()][index];
+                if (cell.getType() == Config.yourColor) {
+                    if (hasCompetitor) {
+                        break;
+                    }
+                    index += 1;
+                }else if(cell.getType() == ChessColorType.BLANK){
+                    cell.setCanPlaceChess(hasCompetitor);
+                    break;
+                }
+                else{
+                    hasCompetitor = true;
+                    index += 1;
+                }
+            }
+            
+        }
     }
 
     @Override
