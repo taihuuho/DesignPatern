@@ -20,13 +20,50 @@ public abstract class ChessCell extends Button{
     int column;
     
     ChessColorType type;
+    
+    private boolean canPlaceChess;
+    
+    private boolean placed;
+    
+    private boolean hinted;
 
     public ChessColorType getType() {
         return type;
     }
+
+    public boolean isCanPlaceChess() {
+        return canPlaceChess && getType() == ChessColorType.BLANK;
+    }
+
+    public void setCanPlaceChess(boolean canPlaceChess) {
+        this.canPlaceChess = canPlaceChess;
+    }
+
+    public boolean isPlaced() {
+        return placed;
+    }
     
+    public boolean canHint(){
+        return isCanPlaceChess();
+    }
+
+    public boolean isHinted() {
+        return hinted;
+    }
+
+    public void setHinted(boolean hinted) {
+        this.hinted = hinted;
+    }
+
+    public void setPlaced(boolean placed) {
+        this.placed = placed;
+    }
+
     public ChessCell(int w, int row, int column) {
         type = ChessColorType.BLANK;
+        canPlaceChess = true;
+        placed = false;
+        
         setPrefSize(w, w);
         setMinWidth(w);
         setMinHeight(w);
@@ -48,7 +85,7 @@ public abstract class ChessCell extends Button{
                 img = ResourceRepository.white;
                 break;
         }
-        
+        placed = img != null;
         ImageView imgView = new ImageView(img);
         imgView.setFitHeight(getPrefHeight()-5);
         imgView.setFitWidth(getPrefWidth()-5);

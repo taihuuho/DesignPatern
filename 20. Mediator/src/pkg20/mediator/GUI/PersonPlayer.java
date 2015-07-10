@@ -9,6 +9,15 @@ package pkg20.mediator.GUI;
  *
  * @author 984571
  */
-public class Config {
-    public static ChessColorType yourColor = ChessColorType.WHITE;
+public class PersonPlayer extends Player{
+
+    public PersonPlayer() {
+        color = Config.yourColor;
+    }
+
+    
+    @Override
+    public ChessCell playNextTurn(ChessCell[][] chesses) {
+        return null;
+    }
 }

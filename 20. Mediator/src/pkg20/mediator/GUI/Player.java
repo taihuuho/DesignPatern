@@ -11,8 +11,10 @@ package pkg20.mediator.GUI;
  */
 public abstract class Player {
     
-    int moves;
-    int pieces;
+    private int moves;
+    private int pieces;
+    
+    ChessColorType color;
     
     public abstract ChessCell playNextTurn(ChessCell[][] chesses);
 
@@ -31,6 +33,12 @@ public abstract class Player {
     public void setPieces(int pieces) {
         this.pieces = pieces;
     }
-   
-    
+
+    public ChessColorType getColor() {
+        return color;
+    }
+
+    public void setColor(ChessColorType color) {
+        this.color = color;
+    }
 }
