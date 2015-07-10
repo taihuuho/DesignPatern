@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package pkg21.observer;
+package observer;
 
 import javafx.application.Application;
 import javafx.event.ActionEvent;
