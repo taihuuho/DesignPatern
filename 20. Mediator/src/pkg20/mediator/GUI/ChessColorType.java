@@ -9,7 +9,7 @@ package pkg20.mediator.GUI;
  *
  * @author 984571
  */
-public enum ChessType {
+public enum ChessColorType {
     BLANK,
     BLACK,
 

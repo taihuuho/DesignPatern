@@ -19,7 +19,14 @@ public abstract class ChessCell extends Button{
     int row;
     int column;
     
+    ChessColorType type;
+
+    public ChessColorType getType() {
+        return type;
+    }
+    
     public ChessCell(int w, int row, int column) {
+        type = ChessColorType.BLANK;
         setPrefSize(w, w);
         setMinWidth(w);
         setMinHeight(w);
@@ -28,7 +35,8 @@ public abstract class ChessCell extends Button{
         
     }
     
-    public void playChess(ChessType type){
+    public void playChess(ChessColorType type){
+        this.type = type;
         Image img = null;
         switch(type){
             case BLANK:

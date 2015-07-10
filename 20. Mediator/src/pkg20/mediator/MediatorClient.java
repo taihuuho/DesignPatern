@@ -41,6 +41,11 @@ public class MediatorClient extends Application {
         primaryStage.setScene(gameUI);
         primaryStage.show();
     }
+    
+    
+    public void update(){
+        
+    }
 
     private Scene buildUI(){
     StackPane root = new StackPane();
