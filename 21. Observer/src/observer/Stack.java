@@ -4,46 +4,65 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Stack implements Subject {
-	private List<Observer> observers;
-	private String action;
-	private String item;
 
-	public Stack() {
-		observers = new ArrayList<Observer>();
-	}
+    private final List<Observer> observers;
 
-	public void attach(Observer observer) {
-		observers.add(observer);
-	}
+    private final List<String> names;
 
-	public void detach(Observer observer) {
-		int i = observers.indexOf(observer);
-		if (i >= 0)
-			observers.remove(i);
-	}
+    private String action;
+    private String item;
 
-	public void notifyObservers() {
-		int n = observers.size();
-		for (int i = 0; i < n; ++i) {
-			Observer observer = (Observer) observers.get(i);
-			observer.update(this.action, this.item);
-		}
-	}
+    public Stack() {
+        observers = new ArrayList<>();
+        names = new ArrayList<>();
+    }
 
-	public void updateData() {
-		notifyObservers();
-	}
+    public List<String> getNames() {
+        return names;
+    }
 
-	public void push(String item) {
-		this.action = "PUSH";
-		this.item = item;
-		updateData();
-	}
+    @Override
+    public void attach(Observer observer) {
+        observers.add(observer);
+    }
 
-	public void pop() {
-		this.action = "POP";
-		this.item = "";
-		updateData();
-	}
+    @Override
+    public void detach(Observer observer) {
+        int i = observers.indexOf(observer);
+        if (i >= 0) {
+            observers.remove(i);
+        }
+    }
+
+    @Override
+    public void notifyObservers() {
+        int n = observers.size();
+        for (int i = 0; i < n; ++i) {
+            Observer observer = (Observer) observers.get(i);
+            observer.update(this.action, this.item, this.names);
+        }
+    }
+
+    public void updateData() {
+        notifyObservers();
+    }
+
+    public void push(String item) {
+        this.action = "PUSH";
+        this.item = item;
+        names.add(item);
+
+        updateData();
+    }
+
+    public void pop() {
+        if (names.size() > 0) {
+            this.action = "POP";
+            this.item = "";
+            names.remove(names.size() - 1);
+            updateData();
+        }
+
+    }
 
 }
