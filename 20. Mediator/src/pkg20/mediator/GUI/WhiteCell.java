@@ -9,9 +9,9 @@ package pkg20.mediator.GUI;
  *
  * @author 984571
  */
-public class WhiteChess extends Chessman{
+public class WhiteCell extends ChessCell{
 
-    public WhiteChess(int w, int row, int column) {
+    public WhiteCell(int w, int row, int column) {
         super(w, row, column);
         setStyle("-fx-background-color: #FFFFFF;");
     }

@@ -14,12 +14,12 @@ import javafx.scene.image.ImageView;
  * @author 984571
  */
 
-public abstract class Chessman extends Button{
+public abstract class ChessCell extends Button{
 
     int row;
     int column;
     
-    public Chessman(int w, int row, int column) {
+    public ChessCell(int w, int row, int column) {
         setPrefSize(w, w);
         setMinWidth(w);
         setMinHeight(w);
@@ -46,5 +46,9 @@ public abstract class Chessman extends Button{
         imgView.setFitWidth(getPrefWidth()-5);
         setGraphic(imgView);
     }
-    
+
+    @Override
+    public String toString() {
+        return "cell["+row+","+column+"]";
+    }
 }
