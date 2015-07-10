@@ -42,4 +42,16 @@ public class ReversiSquare extends GridPane{
             }
         }
     }
+    
+    public void start(){
+    
+    }
+    
+    public void restartGame(){
+        
+    }
+    
+    public void gameOver(){
+        
+    }
 }

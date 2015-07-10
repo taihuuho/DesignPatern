@@ -6,11 +6,14 @@
 package pkg20.mediator.GUI;
 
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 /**
  *
  * @author 984571
  */
+
 public abstract class Chessman extends Button{
 
     int row;
@@ -23,6 +26,25 @@ public abstract class Chessman extends Button{
         this.row = row;
         this.column = column;
         
+    }
+    
+    public void playChess(ChessType type){
+        Image img = null;
+        switch(type){
+            case BLANK:
+                break;
+            case BLACK:
+                img = ResourceRepository.black;
+                break;
+            case WHITE:
+                img = ResourceRepository.white;
+                break;
+        }
+        
+        ImageView imgView = new ImageView(img);
+        imgView.setFitHeight(getPrefHeight()-5);
+        imgView.setFitWidth(getPrefWidth()-5);
+        setGraphic(imgView);
     }
     
 }
