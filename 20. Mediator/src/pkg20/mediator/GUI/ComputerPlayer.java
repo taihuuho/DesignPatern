@@ -11,6 +11,10 @@ package pkg20.mediator.GUI;
  */
 public class ComputerPlayer extends Player{
 
+    public ComputerPlayer() {
+        color = ChessColorType.BLACK;
+    }
+
     @Override
     public ChessCell playNextTurn(ChessCell[][] chesses) {
         return null;

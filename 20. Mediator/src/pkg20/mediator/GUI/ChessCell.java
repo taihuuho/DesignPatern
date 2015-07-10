@@ -61,7 +61,7 @@ public abstract class ChessCell extends Button{
 
     public ChessCell(int w, int row, int column) {
         type = ChessColorType.BLANK;
-        canPlaceChess = true;
+        canPlaceChess = false;
         placed = false;
         
         setPrefSize(w, w);
@@ -86,6 +86,8 @@ public abstract class ChessCell extends Button{
                 break;
         }
         placed = img != null;
+        canPlaceChess = img == null;
+        
         ImageView imgView = new ImageView(img);
         imgView.setFitHeight(getPrefHeight()-5);
         imgView.setFitWidth(getPrefWidth()-5);

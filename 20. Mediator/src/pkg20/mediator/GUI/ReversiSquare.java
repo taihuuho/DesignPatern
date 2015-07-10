@@ -5,6 +5,8 @@
  */
 package pkg20.mediator.GUI;
 
+import java.util.ArrayList;
+import java.util.List;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
@@ -26,6 +28,9 @@ public class ReversiSquare extends GridPane implements EventHandler<ActionEvent>
     Player competitor;
 
     ChessCell[][] chesscells = new ChessCell[ROWS][COLUMNS];
+    
+    List<ChessCell> yourMoves = new ArrayList<>();
+    List<ChessCell> competitorMoves = new ArrayList<>();
 
     public ReversiSquare(int w) {
         you = new PersonPlayer();
@@ -72,6 +77,7 @@ public class ReversiSquare extends GridPane implements EventHandler<ActionEvent>
                     blackChess.setOnMouseEntered(mouseEnterEvent);
                     blackChess.setOnMouseExited(mouseExitEvent);
                     add(blackChess, j, i);
+                    
                     chesscells[i][j] = blackChess;
                 } else {
                     WhiteCell whiteChess = new WhiteCell(squareW, i, j);
@@ -79,6 +85,7 @@ public class ReversiSquare extends GridPane implements EventHandler<ActionEvent>
                     whiteChess.setOnMouseEntered(mouseEnterEvent);
                     whiteChess.setOnMouseExited(mouseExitEvent);
                     add(whiteChess, j, i);
+                    
                     chesscells[i][j] = whiteChess;
                 }
             }
@@ -96,9 +103,11 @@ public class ReversiSquare extends GridPane implements EventHandler<ActionEvent>
         for (int row = ROWS / 2 - NUMBER_OF_SEED / 4; row < ROWS / 2 + NUMBER_OF_SEED / 4; row++) {
             for (int column = COLUMNS / 2 - NUMBER_OF_SEED / 4; column < COLUMNS / 2 + NUMBER_OF_SEED / 4; column++) {
                 if (chesscells[row][column] instanceof BlackCell) {
-                    chesscells[row][column].playChess(ChessColorType.WHITE);
+                    chesscells[row][column].playChess(you.getColor());
+                    yourMoves.add(chesscells[row][column]);
                 } else {
-                    chesscells[row][column].playChess(ChessColorType.BLACK);
+                    chesscells[row][column].playChess(competitor.getColor());
+                    competitorMoves.add(chesscells[row][column]);
                 }
                 chesscells[row][column].setPlaced(true);
             }
@@ -121,22 +130,24 @@ public class ReversiSquare extends GridPane implements EventHandler<ActionEvent>
     }
 
     public void determineAvailableCells() {
-
+        
     }
 
     @Override
     public void handle(ActionEvent event) {
         int move = you.getMoves();
         you.setMoves(move++);
-        ChessCell chessMan = (ChessCell) event.getSource();
-        System.out.println(chessMan);
-        if (chessMan.isCanPlaceChess() && chessMan.getType() == ChessColorType.BLANK) {
-            chessMan.playChess(Config.yourColor);
+        ChessCell chessCell = (ChessCell) event.getSource();
+        System.out.println(chessCell);
+        if (chessCell.isCanPlaceChess() && chessCell.getType() == ChessColorType.BLANK) {
+            chessCell.playChess(Config.yourColor);
+            yourMoves.add(chessCell);
+            
             int pieces = you.getPieces();
             you.setPieces(pieces++);
 
             competitor.playNextTurn(chesscells);
-
+            
             determineAvailableCells();
         }
         update();
