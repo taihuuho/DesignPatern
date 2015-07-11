@@ -207,6 +207,9 @@ public class ReversiSquare extends GridPane implements EventHandler<ActionEvent>
                     index -= 1;
                 } else if (topCell.getType() == ChessColorType.BLANK) {
                     topCell.setCanPlaceChess(hasCompetitor);
+                    if (!hasCompetitor) {
+                        result.add(topCell);
+                    }
                     break;
                 } else {
                     hasCompetitor = true;
@@ -226,6 +229,9 @@ public class ReversiSquare extends GridPane implements EventHandler<ActionEvent>
                     index += 1;
                 } else if (cell.getType() == ChessColorType.BLANK) {
                     cell.setCanPlaceChess(hasCompetitor);
+                    if (!hasCompetitor) {
+                        result.add(cell);
+                    }
                     break;
                 } else {
                     hasCompetitor = true;
@@ -245,6 +251,9 @@ public class ReversiSquare extends GridPane implements EventHandler<ActionEvent>
                     index -= 1;
                 } else if (cell.getType() == ChessColorType.BLANK) {
                     cell.setCanPlaceChess(hasCompetitor);
+                    if (!hasCompetitor) {
+                        result.add(cell);
+                    }
                     break;
                 } else {
                     hasCompetitor = true;
@@ -264,6 +273,9 @@ public class ReversiSquare extends GridPane implements EventHandler<ActionEvent>
                     index += 1;
                 } else if (cell.getType() == ChessColorType.BLANK) {
                     cell.setCanPlaceChess(hasCompetitor);
+                    if (!hasCompetitor) {
+                        result.add(cell);
+                    }
                     break;
                 } else {
                     hasCompetitor = true;
@@ -297,11 +309,16 @@ public class ReversiSquare extends GridPane implements EventHandler<ActionEvent>
                 determineAvailableCellsOfPlayer(you);
 
                 yourTurn = false;
+
+                // computer move
+                ChessCell nextCell = determineAvailableCellsOfPlayer(competitor).get(0);
+                competitor.placeCell(nextCell);
+                yourTurn = true;
+
             }
 
         } else {
-            ChessCell nextCell = competitor.playNextTurn(chesscells);
-            competitor.placeCell(nextCell);
+
         }
 
         // update Moves count, Pieces count
