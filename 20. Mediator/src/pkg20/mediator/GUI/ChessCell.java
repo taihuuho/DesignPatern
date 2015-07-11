@@ -66,6 +66,38 @@ public abstract class ChessCell extends Button{
     public void setPlaced(boolean placed) {
         this.placed = placed;
     }
+    
+    public boolean hasTopCell(){
+        return row > 0;
+    }
+    
+    public boolean hasBottomCell(){
+        return row < ReversiSquare.ROWS - 1;
+    }
+    
+    public boolean hasLeftCell(){
+        return column > 0;
+    }
+    
+    public boolean hasRightCell(){
+        return column < ReversiSquare.COLUMNS - 1;
+    }
+    
+    public boolean hasTopLeftCell(){
+        return row > 0 && column > 0;
+    }
+    
+    public boolean hasTopRightCell(){
+        return row > 0 && column < ReversiSquare.COLUMNS - 1;
+    }
+    
+    public boolean hasBottomLeftCell(){
+        return row < ReversiSquare.ROWS - 1 && column > 0;
+    }
+    
+    public boolean hasBottomRightCell(){
+        return row < ReversiSquare.ROWS - 1 && column < ReversiSquare.COLUMNS - 1;
+    }
 
     public ChessCell(int w, int row, int column) {
         type = ChessColorType.BLANK;

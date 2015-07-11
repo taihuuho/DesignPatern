@@ -5,6 +5,9 @@
  */
 package pkg20.mediator.GUI;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author 984571
@@ -14,10 +17,16 @@ public abstract class Player {
     private int moves;
     private int pieces;
     
-    ChessColorType color;
+    List<ChessCell> movedCells = new ArrayList<>();
+    
+    protected ChessColorType color;
     
     public abstract ChessCell playNextTurn(ChessCell[][] chesses);
 
+    public void placeCell(ChessCell cell){
+        cell.playChess(color);
+        movedCells.add(cell);
+    }
     public int getMoves() {
         return moves;
     }
@@ -41,4 +50,13 @@ public abstract class Player {
     public void setColor(ChessColorType color) {
         this.color = color;
     }
+
+    public List<ChessCell> getMovedCells() {
+        return movedCells;
+    }
+
+    public void setMovedCells(List<ChessCell> movedCells) {
+        this.movedCells = movedCells;
+    }
+    
 }

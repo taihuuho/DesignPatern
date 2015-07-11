@@ -12,7 +12,7 @@ package pkg20.mediator.GUI;
 public class ComputerPlayer extends Player{
 
     public ComputerPlayer() {
-        color = ChessColorType.BLACK;
+        color = ChessColorType.WHITE;
     }
 
     @Override
